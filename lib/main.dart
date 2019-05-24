@@ -4,6 +4,8 @@ import 'movie_model.dart';
 import 'movie_list.dart';
 import 'new_movie_form.dart';
 
+//TODO: Convert year to a date type with a date selector in the form
+//TODO: Accounts?
 
 void main() => runApp(MyApp());
 
@@ -37,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ..add(Movie('The Favourite', 2018, 'Yorgos Lanthimos'))
     ..add(Movie('Bohemian Rhapsody', 2018, 'Bryan Singer'))
     ..add(Movie('Black Panther', 2018, 'Ryan Coogler'))
-    ..add(Movie('Avengeres: Endgame', 2019, 'Anthony, Joe Russo'))
+    ..add(Movie('Avengers: Endgame', 2019, 'Anthony, Joe Russo'))
     ..add(Movie('A Quiet Place', 2018, 'John Kransinski'));
   @override
   Widget build(BuildContext context) {

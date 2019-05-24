@@ -51,16 +51,45 @@ class _MovieCardState extends State<MovieCard> {
   }
 
   Widget get dogImage {
-    return Container(
+    var dogAvatar = Hero(
+      tag: movie,
+      child: Container(
+        width: 100.0,
+        height: 100.0,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: NetworkImage(renderUrl ?? ''),
+          ),
+        ),
+      ),
+    );
+
+
+    var placeholder = Container(
       width: 100.0,
       height: 100.0,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          image: NetworkImage(renderUrl ?? ''),
+        gradient: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [Colors.black54, Colors.black, Colors.blueGrey[600]],
         ),
       ),
+      alignment: Alignment.center,
+      child: Text(
+        'Pooch',
+        textAlign: TextAlign.center,
+      ),
+    );
+
+    return AnimatedCrossFade(
+      firstChild: placeholder,
+      secondChild: dogAvatar,
+      crossFadeState: renderUrl == null ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+      duration: Duration(milliseconds: 2000),
     );
   }
 
