@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'music_card.dart';
-import 'music_model.dart';
+import 'movie_card.dart';
+import 'movie_model.dart';
 
-class MusicList extends StatelessWidget {
+class MovieList extends StatelessWidget {
   // Builder methods rely on a set of data, such as a list.
-  final List<Music> songs;
-  MusicList(this.songs);
+  final List<Movie> movies;
+  MovieList(this.movies);
 
   // First, make your build method like normal.
   // Instead of returning Widgets, return a method that returns widgets.
@@ -25,11 +25,11 @@ class MusicList extends StatelessWidget {
   ListView _buildList(context) {
     return ListView.builder(
       // Must have an item count equal to the number of items!
-      itemCount: songs.length,
+      itemCount: movies.length,
       // A callback that will return a widget.
       itemBuilder: (context, int) {
         // In our case, a DogCard for each doggo.
-        return MusicCard(songs[int]);
+        return MovieCard(movies[int]);
       },
     );
   }

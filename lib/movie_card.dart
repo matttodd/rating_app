@@ -1,37 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:rating_app/movie_detail_page.dart';
 
-import 'music_model.dart';
+import 'movie_model.dart';
 
-class MusicCard extends StatefulWidget {
-  final Music music;
+class MovieCard extends StatefulWidget {
+  final Movie movie;
 
-  MusicCard(this.music);
+  MovieCard(this.movie);
 
   @override
-  _MusicCardState createState() => _MusicCardState(music);
+  _MovieCardState createState() => _MovieCardState(movie);
 }
 
-class _MusicCardState extends State<MusicCard> {
-  Music music;
+class _MovieCardState extends State<MovieCard> {
+  Movie movie;
   String renderUrl;
 
-  _MusicCardState(this.music);
+  _MovieCardState(this.movie);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Container(
-        height: 105.0,
-        child: Stack(
-          children: <Widget>[
-            Positioned(
-              left: 50.0,
-              child: musicCard,
-            ),
-            Positioned(top: 5.0, child: dogImage),
-          ],
+    return InkWell(
+      onTap: showMovieDetailPage,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        child: Container(
+          height: 105.0,
+          child: Stack(
+            children: <Widget>[
+              Positioned(
+                left: 50.0,
+                child: movieCard,
+              ),
+              Positioned(top: 5.0, child: dogImage),
+            ],
+          ),
         ),
+      ),
+    );
+  }
+
+  showMovieDetailPage() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return MovieDetailPage(movie);
+        },
       ),
     );
   }
@@ -56,13 +70,13 @@ class _MusicCardState extends State<MusicCard> {
   }
 
   void renderDogPic() async {
-    await music.getImageUrl();
+    await movie.getImageUrl();
     setState(() {
-      renderUrl = music.imageUrl;
+      renderUrl = movie.imageUrl;
     });
   }
 
-  Widget get musicCard {
+  Widget get movieCard {
     return Container(
       width: 290.0,
       height: 115.0,
@@ -78,16 +92,16 @@ class _MusicCardState extends State<MusicCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Text(widget.music.title,
-                style: Theme.of(context).textTheme.headline),
-              Text(widget.music.artist,
+              Text(widget.movie.title,
+                style: Theme.of(context).textTheme.title),
+              Text(widget.movie.year.toString(),
                 style: Theme.of(context).textTheme.subhead),
               Row(
                 children: <Widget>[
                   Icon(
                     Icons.star,
                   ),
-                  Text(': ${widget.music.rating} / 10')
+                  Text(': ${widget.movie.rating} / 10')
                 ],
               )
             ],

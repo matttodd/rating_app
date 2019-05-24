@@ -2,15 +2,15 @@ import 'dart:convert';
 
 import 'dart:io';
 
-class Music {
+class Movie {
   final String title;
-  final String artist;
-  final String album;
+  final int year;
+  final String critique;
   String imageUrl;
 
   int rating = 0;
 
-  Music(this.title, this.artist, this.album);
+  Movie(this.title, this.year, this.critique);
 
   Future getImageUrl() async {
     if (imageUrl != null) {
