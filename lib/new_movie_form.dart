@@ -29,20 +29,24 @@ class _AddMovieFormPageState extends State<AddMovieFormPage> {
                 // It comes built in with a ton of great UI and
                 // functionality, such as the labelText field you see below.
                 child: TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Title',
-                      filled: true,
-                      fillColor: Color(0xFF2b2b2b),
-                    )),
+                  decoration: InputDecoration(
+                    labelText: 'Title',
+                    filled: true,
+                    fillColor: Color(0xFF2b2b2b),
+                  ),
+                  maxLines: 1,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: TextField(
-                    decoration: InputDecoration(
-                      labelText: "Date of viewing",
-                      filled: true,
-                      fillColor: Color(0xFF2b2b2b),
-                    )),
+                  decoration: InputDecoration(
+                    labelText: "Date of viewing",
+                    filled: true,
+                    fillColor: Color(0xFF2b2b2b),
+                  ),
+                  maxLines: 1,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
@@ -53,7 +57,8 @@ class _AddMovieFormPageState extends State<AddMovieFormPage> {
                     filled: true,
                     fillColor: Color(0xFF2b2b2b),
                   ),
-                  maxLines: null,
+                  minLines: 1,
+                  maxLines: 5,
                 ),
               ),
               // A Strange situation.
